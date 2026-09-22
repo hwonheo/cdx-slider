@@ -1,0 +1,14 @@
+interface:
+  display_name: "CDX Slider"
+  short_description: "Save project context and restore the latest checkpoint from the conversation panel"
+  default_prompt: "$slider-continuity"
+
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "cdx-slider"
+      description: "CDX Slider local MCP server for the conversation panel and checkpoints"
+      transport: "stdio"
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CDX Slider</title>
+  <style>/* PANEL_STYLES */</style>
+</head>
+<body>
+  <main class="panel">
+    <div id="compact-bar" hidden aria-label="CDX Slider quick actions" data-i18n-aria-label="CDX Slider 빠른 작업">
+      <strong id="compact-project" title="Selected project" data-i18n-title="선택한 프로젝트">CDX Slider</strong>
+      <button id="compact-save" class="secondary" disabled><span data-i18n="저장">Save</span></button>
+      <button id="compact-resume" class="secondary" disabled><span data-i18n="불러오기">Resume</span></button>
+      <button id="expand-panel" class="text-button" aria-expanded="false" aria-controls="expanded-panel"><span data-i18n="펼치기">Expand</span></button>
+    </div>
+    <div id="expanded-panel">
+    <header>
+      <div class="brand"><span class="mark" aria-hidden="true"><i></i><i></i><i></i></span><h1>CDX Slider</h1></div>
+      <span id="connection" class="connection"><span data-i18n="대화 연결 중">Connecting conversation</span></span>
+    </header>
+    <div class="display-controls">
+      <label class="language-control"><span data-i18n="언어">Language</span><select id="language" aria-label="Language"><option value="en">EN</option><option value="ko">KR</option></select></label>
+      <button id="float-panel" class="text-button" hidden disabled><span data-i18n="작게 띄우기">Float panel</span></button>
+      <button id="inline-panel" class="text-button" hidden><span data-i18n="대화 안으로">Return inline</span></button>
+      <button id="open-bar" class="text-button" disabled><span data-i18n="CDX Slider Bar 다시 띄우기">Open CDX Slider Bar</span></button>
+    </div>
+    <p class="intro"><span data-i18n="작업의 맥락을 저장하고, 다음 대화로 이어가세요.">Save your work context and continue in your next conversation.</span></p>
+    <nav class="tabs" role="tablist" aria-label="Panel sections" data-i18n-aria-label="패널 메뉴">
+      <button id="tab-work" role="tab" aria-selected="true" aria-controls="panel-work" tabindex="0"><span data-i18n="작업">Work</span></button>
+      <button id="tab-account" role="tab" aria-selected="false" aria-controls="panel-account" tabindex="-1"><span data-i18n="계정">Account</span></button>
+      <button id="tab-transfer" role="tab" aria-selected="false" aria-controls="panel-transfer" tabindex="-1"><span data-i18n="전환">Switch</span></button>
+    </nav>
+    <section id="panel-work" role="tabpanel" aria-labelledby="tab-work" tabindex="0">
+    <section class="selection" aria-label="Project to save" data-i18n-aria-label="저장할 프로젝트">
+      <label><span data-i18n="저장용 프로필">Storage profile</span><select id="profile" disabled><option data-i18n="불러오는 중">Loading</option></select></label>
+      <label><span data-i18n="프로젝트">Project</span><select id="project" disabled><option data-i18n="프로젝트를 선택하세요">Select a project</option></select></label>
+      <button id="register-toggle" class="text-button" aria-expanded="false" aria-controls="register-form" disabled><span data-i18n="＋ 프로젝트 등록">＋ Register project</span></button>
+    </section>
+    <p class="hint profile-hint"><span data-i18n="저장용 프로필은 작업 보관함입니다. Codex 워크스페이스와 별개입니다.">A storage profile holds your saved work. It is separate from your Codex workspace.</span></p>
+    <p id="profile-empty" class="hint" hidden><span data-i18n="첫 사용입니다. 저장용 프로필을 만든 뒤 프로젝트를 등록하세요.">Create a storage profile to register your first project.</span></p>
+    <button id="profile-register-toggle" class="text-button" aria-expanded="false" aria-controls="profile-register-form" disabled><span data-i18n="＋ 저장용 프로필 만들기">＋ Create storage profile</span></button>
+    <form id="profile-register-form" hidden>
+      <label><span data-i18n="프로필 이름">Profile name</span><input id="profile-label" required maxlength="200"></label>
+      <label><span data-i18n="프로필 ID">Profile ID</span><input id="profile-id" required maxlength="64" pattern="[a-z0-9][a-z0-9\-]{0,63}" value="desktop"><small><span data-i18n="영문 소문자, 숫자, 하이픈을 사용할 수 있습니다.">Use lowercase letters, numbers, and hyphens.</span></small></label>
+      <div class="form-buttons"><button type="button" id="profile-register-cancel" class="secondary"><span data-i18n="취소">Cancel</span></button><button type="submit" class="primary"><span data-i18n="프로필 만들기">Create profile</span></button></div>
+    </form>
+    <form id="register-form" hidden>
+      <p class="form-heading"><span data-i18n="이 프로필에 프로젝트 등록">Register a project in this profile</span></p>
+      <label><span data-i18n="프로젝트 이름">Project name</span><input id="project-name" required maxlength="200" placeholder="e.g. Team website" data-i18n-placeholder="예: 우리 팀 웹사이트"></label>
+      <label><span data-i18n="프로젝트 ID">Project ID</span><input id="project-id" required maxlength="64" pattern="[a-z0-9][a-z0-9\-]{0,63}" placeholder="e.g. team-website" data-i18n-placeholder="예: team-website"><small><span data-i18n="영문 소문자, 숫자, 하이픈을 사용할 수 있습니다.">Use lowercase letters, numbers, and hyphens.</span></small></label>
+      <label><span data-i18n="폴더 경로">Folder path</span><input id="project-path" required placeholder="/Users/…/my-project" spellcheck="false"></label>
+      <div class="form-buttons"><button type="button" id="register-cancel" class="secondary"><span data-i18n="취소">Cancel</span></button><button type="submit" class="primary"><span data-i18n="프로젝트 등록">Register project</span></button></div>
+    </form>
+    <section class="checkpoint" aria-labelledby="checkpoint-title">
+      <div class="checkpoint-heading"><h2 id="checkpoint-title"><span data-i18n="마지막 체크포인트">Latest checkpoint</span></h2><button id="refresh" class="text-button" disabled><span data-i18n="새로고침">Refresh</span></button></div>
+      <p id="saved-at" class="saved-at"><span data-i18n="프로젝트를 선택해 주세요.">Select a project.</span></p>
+      <p id="summary" class="summary"><span data-i18n="저장된 작업 내용을 여기에 표시합니다.">Your saved work will appear here.</span></p>
+      <details id="details" hidden><summary><span data-i18n="저장 내용 보기">View saved details</span></summary><div id="details-content"></div></details>
+    </section>
+    <div class="actions">
+      <button id="save" class="primary" disabled><span aria-hidden="true">↓</span> <span data-i18n="현재 대화 저장">Save this conversation</span></button>
+      <button id="resume" class="secondary" disabled><span data-i18n="마지막 작업 불러오기">Resume saved work</span></button>
+    </div>
+    <p id="relay-status" class="hint" role="status"></p>
+    <p id="action-hint" class="hint"><span data-i18n="현재 대화와 연결되면 버튼을 사용할 수 있습니다.">Actions become available when this conversation connects.</span></p>
+    </section>
+    <section id="panel-account" role="tabpanel" aria-labelledby="tab-account" tabindex="0" hidden>
+    <section class="account" aria-labelledby="account-title">
+      <div class="checkpoint-heading"><h2 id="account-title"><span data-i18n="계정 정보">Account details</span></h2><button id="account-refresh" class="text-button" disabled><span data-i18n="계정 새로고침">Refresh account</span></button></div>
+      <p id="account-identity" aria-live="polite"><span data-i18n="계정 연결을 확인하고 있습니다.">Checking account connection.</span></p>
+      <p id="account-plan" hidden></p>
+      <p class="hint"><span data-i18n="조회 출처: 로컬 Codex 로그인 · 현재 데스크톱 계정과 다를 수 있습니다.">Source: local Codex sign-in. The desktop account may differ.</span></p>
+      <p id="account-checked" class="hint"></p>
+    </section>
+    <section class="account" aria-labelledby="workspace-title">
+      <div class="checkpoint-heading"><h2 id="workspace-title"><span data-i18n="워크스페이스 식별자">Workspace identifier</span></h2><button id="workspace-refresh" class="text-button" disabled><span data-i18n="워크스페이스 확인">Check workspace</span></button></div>
+      <p class="hint"><span data-i18n="워크스페이스 이름은 Codex 앱에서 확인하세요.">Check the workspace name in the Codex app.</span></p>
+      <details><summary><span data-i18n="조회한 ID와 출처">Retrieved ID and source</span></summary>
+      <p id="workspace-identity" aria-live="polite"><span data-i18n="워크스페이스 확인 중…">Checking workspace…</span></p>
+      <p class="hint"><span data-i18n="이름과 ID는 표시 방식이 다릅니다. 이 연결에서는 ID만 조회되며, 데스크톱에서 선택한 워크스페이스와 같은지는 확인되지 않습니다.">This connection retrieves an ID only. It cannot confirm whether this matches the workspace selected in the desktop app.</span></p>
+      <p id="workspace-checked" class="hint"></p>
+      <p id="workspace-change" class="hint" role="status"></p>
+      </details>
+    </section>
+    </section>
+    <section id="panel-transfer" role="tabpanel" aria-labelledby="tab-transfer" tabindex="0" hidden>
+      <section class="login-controls"><h2><span data-i18n="계정·워크스페이스 변경">Change account or workspace</span></h2>
+        <p class="hint"><span data-i18n="현재 대화를 먼저 저장하세요. 공식 로그인 화면에서 계정과 워크스페이스를 선택합니다. 완료하면 로컬 Codex 인증이 변경됩니다. 실행 중인 데스크톱의 전환 여부는 별도로 확인해야 합니다.">Save this conversation first. Choose an account and workspace on the official sign-in page. This changes local Codex authentication; check the running desktop app separately.</span></p>
+        <div class="form-buttons"><button id="login-start" class="secondary" disabled><span data-i18n="로컬 재로그인 시작">Sign in again locally</span></button><button id="login-open" class="text-button" hidden><span data-i18n="공식 로그인 페이지 열기">Open official sign-in page</span></button><button id="login-cancel" class="text-button" hidden><span data-i18n="요청 취소">Cancel request</span></button></div>
+        <p id="login-status" class="hint" role="status"></p>
+      </section>
+      <div class="restart-controls">
+        <h2><span data-i18n="Codex 앱 재시작">Restart Codex</span></h2>
+        <p class="hint"><span data-i18n="열려 있는 모든 작업이 중단됩니다. 먼저 저장을 완료하고 진행 중인 작업을 멈춰주세요.">All open tasks will be interrupted. Save your work and stop active tasks first.</span></p>
+        <label class="check-label"><input id="restart-saved" type="checkbox"> <span data-i18n="모든 작업의 저장·중단을 확인했습니다">I have saved my work and stopped all tasks</span></label>
+        <label class="check-label"><input id="restart-auto" type="checkbox" disabled> <span data-i18n="이번 재로그인 완료 후 자동 재시작">Restart automatically after this sign-in</span></label>
+        <div class="form-buttons"><button id="restart-now" class="secondary" disabled><span data-i18n="Codex 재시작 예약 (15초)">Schedule restart (15 sec)</span></button><button id="restart-cancel" class="text-button" hidden><span data-i18n="재시작 취소">Cancel restart</span></button></div>
+        <p id="restart-status" class="hint" role="status"><span data-i18n="재시작 지원 확인 중…">Checking restart support…</span></p>
+      </div>
+    </section>
+
+    <dialog id="restart-confirm">
+      <form method="dialog">
+        <h2><span data-i18n="모든 작업을 저장하고 중단했나요?">Have you saved your work and stopped all tasks?</span></h2>
+        <p><span data-i18n="계속하면 Codex가 종료·재실행됩니다. 진행 중인 작업을 먼저 마쳐주세요.">Continuing closes and reopens Codex. Finish active tasks first.</span></p>
+        <div class="form-buttons"><button value="cancel" autofocus><span data-i18n="취소">Cancel</span></button><button value="confirm" class="primary"><span data-i18n="저장·중단 확인 후 계속">Confirm and continue</span></button></div>
+      </form>
+    </dialog>
+    <footer><span><span data-i18n="프로젝트마다 따로 보관">Stored separately for each project</span></span><span><span data-i18n="저장 버튼을 누를 때만 요청">Save only when you request it</span></span></footer>
+    </div>
+    <p id="display-status" class="hint" role="status" hidden></p>
+    <p id="status" role="status" aria-live="polite" hidden></p>
+  </main>
+  <script type="module">/* PANEL_SCRIPT */</script>
+</body>
+</html>

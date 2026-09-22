@@ -1,0 +1,124 @@
+/* Shared tokens follow the host's typography while remaining readable standalone. */
+:root {
+  color-scheme: light dark;
+  --paper: #fff;
+  --ground: #f3f6fa;
+  --ink: #17243a;
+  --muted: #637086;
+  --line: #dce3ed;
+  --blue: #3159c7;
+  --blue-light: #eaf0ff;
+  --green: #24704c;
+  --red: #b43636;
+  --radius: 12px;
+  --slider-font-size: var(--font-text-sm-size, var(--font-text-md-size, .875rem));
+  font-family: var(--font-sans, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif);
+  font-size: 100%;
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--paper);
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-size: var(--slider-font-size); }
+button, input, select { font: inherit; }
+button { cursor: pointer; transition: background .15s; }
+button:disabled { cursor: not-allowed; opacity: .5; }
+button:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+[hidden] { display: none !important; }
+.panel { max-width: 600px; padding: 20px; margin: auto; }
+header, .brand, .checkpoint-heading, .form-buttons, footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+header, .checkpoint-heading, .form-buttons { flex-wrap: wrap; }
+.brand { justify-content: flex-start; gap: 10px; }
+h1 { font-size: calc(var(--slider-font-size) * 1.4167); letter-spacing: -.4px; line-height: 1.2; margin: 0; font-weight: 700; }
+h2 { margin: 0; font-size: inherit; font-weight: 600; }
+.mark { display: flex; align-items: center; gap: 3px; height: 25px; }
+.mark i { display: block; width: 5px; border-radius: 5px; background: var(--blue); height: 14px; }
+.mark i:nth-child(2) { height: 25px; }
+.mark i:nth-child(3) { height: 19px; }
+.connection { color: var(--muted); overflow-wrap: anywhere; }
+.connection.connected { color: var(--green); }
+.connection::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: currentColor; margin-right: 6px; }
+.connection, label, .text-button, .saved-at, .hint, summary, footer {
+  font-size: max(.75rem, calc(var(--slider-font-size) * .9167));
+}
+.intro { color: var(--muted); margin: 10px 0 16px; }
+.display-controls { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+.display-controls .hint { margin: 0; }
+.language-control { flex-direction: row; align-items: center; gap: 8px; margin-left: auto; }
+.language-control select { width: auto; min-width: 5rem; min-height: 34px; padding: 5px 8px; }
+.tabs { display: flex; gap: 16px; border-bottom: 1px solid var(--line); margin-bottom: 16px; }
+.tabs [role=tab] { border: 0; border-bottom: 2px solid transparent; background: transparent; color: var(--muted); padding: 10px 8px; font-weight: 600; min-width: 48px; min-height: 40px; }
+.tabs [aria-selected=true] { color: var(--blue); border-bottom-color: var(--blue); }
+[role=tabpanel]:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+.selection { display: grid; grid-template-columns: minmax(100px, .7fr) minmax(160px, 1.3fr); gap: 12px; }
+label { display: flex; flex-direction: column; gap: 6px; font-weight: 600; color: var(--muted); }
+/* Keep language labels horizontal despite the generic form-label layout. */
+label.language-control { flex-direction: row; }
+select, input { min-width: 0; width: 100%; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 9px 10px; font-size: var(--slider-font-size); font-weight: 400; }
+input::placeholder { color: var(--muted); opacity: 1; }
+.text-button { color: var(--blue); border: 0; background: transparent; padding: 6px 4px; min-height: 32px; font-weight: 600; }
+.text-button:not(:disabled):hover { background: var(--blue-light); border-radius: 6px; }
+.selection > .text-button { grid-column: 2; justify-self: end; }
+form { margin: 16px 0 24px; padding: 18px; background: var(--ground); border-radius: var(--radius); display: grid; gap: 12px; }
+.form-heading { margin: 0; font-weight: 600; }
+small { font-weight: 400; font-size: inherit; }
+.form-buttons { justify-content: flex-end; }
+.checkpoint { margin: 16px 0; padding: 16px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.saved-at { color: var(--muted); margin: 4px 0 12px; }
+.summary { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; max-height: 160px; overflow: auto; }
+.actions { display: grid; grid-template-columns: 1.1fr 1fr; gap: 10px; }
+.primary, .secondary { padding: 10px 12px; border-radius: 9px; font-weight: 600; border: 1px solid transparent; min-height: 40px; overflow-wrap: anywhere; }
+.primary { color: white; background: var(--blue); }
+.primary:not(:disabled):hover { background: #2447ad; }
+.secondary { background: var(--paper); color: var(--ink); border-color: var(--line); }
+.secondary:not(:disabled):hover { background: var(--ground); }
+.primary span { margin-right: 6px; }
+.hint { color: var(--muted); margin: 12px 0 0; overflow-wrap: anywhere; }
+.profile-hint { margin-top: 4px; }
+#status { padding: 12px 14px; background: var(--blue-light); border-radius: 8px; margin: 16px 0 0; overflow-wrap: anywhere; }
+#status.error { color: var(--red); background: var(--ground); }
+footer { margin-top: 16px; color: var(--muted); gap: 8px; flex-wrap: wrap; }
+details { margin-top: 16px; }
+summary { cursor: pointer; color: var(--blue); min-height: 32px; padding-block: 6px; }
+#details-content { white-space: pre-wrap; overflow-wrap: anywhere; color: var(--muted); max-height: 240px; overflow: auto; padding-top: 8px; }
+.account { padding: 0 0 16px; margin-bottom: 16px; border-bottom: 1px solid var(--line); overflow-wrap: anywhere; }
+.account:last-child { border: 0; margin-bottom: 0; padding-bottom: 0; }
+.account p { margin: 6px 0 0; }
+.account details { margin-top: 8px; }
+#account-identity { font-weight: 600; }
+.login-controls .form-buttons { justify-content: flex-start; margin-top: 12px; }
+.restart-controls { border-top: 1px solid var(--line); padding-top: 16px; margin-top: 16px; }
+.check-label { flex-direction: row; align-items: flex-start; gap: 8px; margin: 10px 0; padding-block: 4px; color: var(--ink); font-weight: 400; }
+.check-label input { width: auto; flex: none; margin-top: 3px; accent-color: var(--blue); }
+.restart-controls .form-buttons { justify-content: flex-start; }
+dialog { width: min(440px, calc(100% - 32px)); max-height: calc(100% - 32px); padding: 0; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: 0 20px 60px #0004; }
+dialog::backdrop { background: #0b142b80; }
+dialog form { margin: 0; padding: 24px; background: var(--paper); }
+dialog p { margin: 0; }
+dialog .form-buttons > button { min-height: 40px; padding: 8px 12px; border-radius: 8px; }
+#compact-bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+#compact-project { max-width: 10em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#compact-bar .secondary { padding: 6px 9px; min-height: 32px; }
+body.compact .panel { padding: 8px; max-width: none; }
+body.pip:not(.compact) .panel { max-height: 520px; overflow: auto; }
+body.compact #status { margin-top: 6px; padding: 6px 8px; max-height: 5em; overflow: auto; }
+@media (max-width: 420px) {
+  .panel { padding: 16px; }
+  .selection, .actions { grid-template-columns: 1fr; }
+  .selection > .text-button { grid-column: 1; }
+  .tabs { gap: 8px; }
+}
+@media (prefers-color-scheme: dark) {
+  :root { --paper: #182235; --ground: #202e44; --ink: #eaf0fa; --muted: #a2b2ca; --line: #37455c; --blue: #7098ff; --blue-light: #253956; --green: #82d2a5; --red: #ff9b9b; }
+  .primary { color: #102143; }
+  .primary:not(:disabled):hover { background: #8aacff; }
+}
+@media (prefers-reduced-motion: reduce) { button { transition: none; } }

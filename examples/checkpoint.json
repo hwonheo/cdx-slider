@@ -1,0 +1,8 @@
+{
+  "goal": "Continue working on this project after switching accounts.",
+  "summary": "Registered the project and prepared its first checkpoint.",
+  "decisions": ["Keep usage limits separate for each account."],
+  "nextSteps": ["After switching accounts, select the intended storage profile and resume the project to continue working."],
+  "checks": ["A live account-switching test has not been performed yet."],
+  "files": ["README.md"]
+}

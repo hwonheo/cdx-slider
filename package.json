@@ -1,0 +1,39 @@
+{
+  "name": "cdx-slider",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Local project memory and handoffs across Codex profiles",
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "bin": {
+    "cdx-slider": "./bin/cdx-slider.mjs"
+  },
+  "scripts": {
+    "pretest": "npm run build",
+    "test": "node --test",
+    "start": "node src/server.mjs",
+    "slider": "node bin/cdx-slider.mjs",
+    "build": "node scripts/build.mjs",
+    "build:companion": "node scripts/build-companion.mjs",
+    "install:companion": "node scripts/install-companion.mjs",
+    "uninstall:companion": "node scripts/install-companion.mjs --uninstall",
+    "uninstall:all": "node scripts/uninstall-all.mjs",
+    "export:source": "node scripts/export-source.mjs",
+    "update": "node src/update-cli.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/ext-apps": "1.7.5",
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "zod": "4.6.5"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hwonheo/cdx-slider.git"
+  }
+}

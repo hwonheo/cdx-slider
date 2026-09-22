@@ -1,0 +1,19 @@
+{
+  "name": "cdx-slider",
+  "version": "0.1.0",
+  "description": "Keep project memory and handoffs available across Codex profiles.",
+  "author": {
+    "name": "Local developer"
+  },
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "CDX Slider",
+    "shortDescription": "Keep project context across account changes",
+    "longDescription": "Local project registry, shared memory, explicit checkpoints, portable handoffs, and Codex usage lookup. Does not merge quotas or restore native conversations.",
+    "developerName": "Local developer",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": "Find my project in CDX Slider and resume from its latest checkpoint."
+  },
+  "mcpServers": "./.mcp.json"
+}
